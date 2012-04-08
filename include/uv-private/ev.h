@@ -640,8 +640,10 @@ void ev_unref (EV_P);
  */
 void ev_once (EV_P_ int fd, int events, ev_tstamp timeout, void (*cb)(int revents, void *arg), void *arg);
 
-# if EV_FEATURE_API
 unsigned int ev_iteration (EV_P); /* number of loop iterations */
+void         ev_tick_me_off (EV_P); // a way to increment the tick count for things
+                                    // like next tick
+# if EV_FEATURE_API
 unsigned int ev_depth     (EV_P); /* #ev_loop enters - #ev_loop leaves */
 void         ev_verify    (EV_P); /* abort if loop data corrupted */
 

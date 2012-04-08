@@ -547,6 +547,14 @@ int uv__dup(int fd) {
   return fd;
 }
 
+unsigned int uv_current_tick (uv_loop_t* loop) {
+  return ev_iteration(loop->ev);
+}
+
+void uv_tick_me_off (uv_loop_t* loop) {
+  ev_tick_me_off(loop->ev);
+}
+
 
 /* TODO move to uv-common.c? */
 size_t uv__strlcpy(char* dst, const char* src, size_t size) {

@@ -204,7 +204,9 @@ RB_HEAD(uv_timer_tree_s, uv_timer_s);
   /* Counter to keep track of active tcp streams */                           \
   unsigned int active_tcp_streams;                                            \
   /* Counter to keep track of active udp streams */                           \
-  unsigned int active_udp_streams;
+  unsigned int active_udp_streams;                                            \
+  /* Counter to keep track of the turns of the event loop */                  \
+  unsigned int loop_count;                                           
 
 #define UV_HANDLE_TYPE_PRIVATE            \
   UV_ARES_EVENT,

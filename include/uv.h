@@ -248,6 +248,16 @@ UV_EXTERN void uv_unref(uv_loop_t*);
 UV_EXTERN void uv_update_time(uv_loop_t*);
 UV_EXTERN int64_t uv_now(uv_loop_t*);
 
+/*
+ * Obtain the current tick count.
+ */
+UV_EXTERN unsigned int uv_current_tick(uv_loop_t*);
+
+/*
+ * A way to increment the tick count for things that are not going
+ * to have blocking io.  Like node's proccess.nextTick()
+ */
+UV_EXTERN void uv_tick_me_off (uv_loop_t*);
 
 /*
  * Should return a buffer that libuv can use to read data into.

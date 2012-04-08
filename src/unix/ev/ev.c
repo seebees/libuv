@@ -1625,13 +1625,20 @@ ev_backend (EV_P)
   return backend;
 }
 
-#if EV_FEATURE_API
+
 unsigned int
 ev_iteration (EV_P)
 {
   return loop_count;
 }
 
+void
+ev_tick_me_off(EV_P)
+{
+  ++loop_count;
+}
+
+#if EV_FEATURE_API
 unsigned int
 ev_depth (EV_P)
 {
@@ -2494,9 +2501,9 @@ ev_run (EV_P_ int flags)
               }
           }
 
-#if EV_FEATURE_API
+
         ++loop_count;
-#endif
+
         assert ((loop_done = EVBREAK_RECURSE, 1)); /* assert for side effect */
         backend_poll (EV_A_ waittime);
         assert ((loop_done = EVBREAK_CANCEL, 1)); /* assert for side effect */

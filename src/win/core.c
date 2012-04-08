@@ -147,6 +147,13 @@ void uv_unref(uv_loop_t* loop) {
   loop->refs--;
 }
 
+unsigned int uv_current_tick (uv_loop_t* loop) {
+  return loop->loop_count;
+}
+
+void uv_tick_me_off (uv_loop_t* loop) {
+  ++(loop->loop_count);
+}
 
 static void uv_poll(uv_loop_t* loop, int block) {
   BOOL success;
@@ -233,7 +240,7 @@ static void uv_poll_ex(uv_loop_t* loop, int block) {
     }                                                                         \
                                                                               \
     uv_prepare_invoke((loop));                                                \
-                                                                              \
+    ++((loop)->loop_count);                                                   \
     poll((loop), (loop)->idle_handles == NULL &&                              \
                  (loop)->pending_reqs_tail == NULL &&                         \
                  (loop)->endgame_handles == NULL &&                           \
