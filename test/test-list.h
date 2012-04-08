@@ -98,6 +98,7 @@ TEST_DECLARE   (pipe_ref4)
 TEST_DECLARE   (pipe_ref5)
 TEST_DECLARE   (process_ref)
 TEST_DECLARE   (async)
+TEST_DECLARE   (current_tick)
 TEST_DECLARE   (get_currentexe)
 TEST_DECLARE   (process_title)
 TEST_DECLARE   (cwd_and_chdir)
@@ -284,6 +285,8 @@ TASK_LIST_START
   TEST_ENTRY  (loop_handles)
 
   TEST_ENTRY  (async)
+
+  TEST_ENTRY  (current_tick)
 
   TEST_ENTRY  (get_currentexe)
 
